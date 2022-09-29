@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div id="bpp">
+          <nav class="navbar navbar-expand-lg bg-light">
+               <div class="container-fluid">
+                 <a class="navbar-brand" href="index.html">Главная</a>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                     <li class="nav-item">
+                       <a class="nav-link active" aria-current="page" href="/test.html">Cоздать собственный тест</a>
+                     </li>
+                     <li class="nav-item">
+                       <a class="nav-link active" aria-current="page" href="/registration.html">Регистрация</a>
+                     </li>
+                     <li class="nav-item position-absolute end-0">
+                       <div v-if="!logging.log">
+                         <a class="nav-link" href="./profile.html">Профиль</a>
+                       </div>
+                       <div v-else>
+                         <a class="nav-link" href="./profile.html">{{logging.name}}</a>
+                       </div>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </nav>
+        </div>
+       </header>
+    <div id="app" class="pregovno">
+    <div v-if="done">
+
+        <h1 style="align-items: center;">создание собственного теста</h1>
+            <div class="nameTest">
+                <div v-if="submited">
+    
+                    <input type="text" placeholder="Название теста" v-model="test.name">
+                </div>
+                <div v-else>
+                <input type="text" placeholder="Название теста" v-model="test.name">
+                    <p style="color: red;"> это имя уже занято</p>
+                </div>
+                <input type="text" placeholder="Описание теста" v-model="test.opis" required>
+                <button id="vopros" @click="vopros">добавить вопрос</button>
+                <button @click = trigger2> добавить картинку</button>
+                <input type="file" id = 'glavimg' @change = 'image2' style="display:none;">
+            </div>
+            <div v-for="(item, index) in test.voprosi" :key="index">
+                <div :id="index" class="govno">
+                    <input :id = '"inp" + index' type="file" @change = 'image' multiple = 'true' style="display: none;">
+                    <button @click="trigger" :id = index > добавить картинку  </button>
+                    <input type="text" placeholder="Введите вопрос" v-model="item.text">
+                    <button id = 'otvet' @click ="otvet"> добавить вариант ответа</button>
+                    <label for="multi">несколько варинатов ответа</label>
+                  
+                    <input type="checkbox" name="нсколько ответов" :id = 'index + "multi"' value='' @click = 'check'>
+                    <div v-for="(prop, indexes) in item.otvets" :key="indexes" :id = 'indexes'>
+                        <div v-if="item.check">
+                            <input type="radio"  :name="'radAnswer' + index" @change = 'toggle' :id="indexes">           
+                
+                            <input type="text" class="otvet" placeholder="введите ответ" v-model="prop.text">
+                            <div style="color: red;" v-if="!prop.filled">
+                                введите текст ответа!
+                            </div>
+                        </div>
+                        <div v-else>
+                            <input type="checkbox" @click = 'checkbox' :id="indexes">
+                            <input type="text" class="otvet" placeholder="введите ответ"  v-model="prop.text">
+                            <div style="color: red;" v-if="!prop.filled">
+                                введите текст ответа!
+                            </div>-
+                        </div>
+                    </div>
+                        
+                </div>
+    
+            </div>
+            <button id="popo" @click = 'submit'>отправить</button>
+        </div>
+        <div v-if="!done">
+            <h1>спaсибо все готово!</h1>
+        </div>
+    </div>
+    </body>
+<script src="/test.js" defer></script>
+<script src="/js/auth.js"></script>
+
+</html>

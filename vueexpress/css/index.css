@@ -1,0 +1,94 @@
+html,body{
+    margin: 10px;
+    max-width: 1920px;
+}
+.golova{
+    background-color: lightslategray;
+    border: 8px solid gray;
+    border-radius: 10px;
+    
+}
+.nameTest{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pregovno{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+.pregovno *{
+    margin: 2px;
+}
+.govno{
+    border: 2px solid black;
+    background-color: antiquewhite;
+}
+.govno:not(img){
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+.govno img{
+    display: inline-block;
+}
+
+.preview{
+
+    width: 300px;
+    height: auto;
+}
+.upper_block{
+    border: 2px solid green;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    display: inline-block;
+    margin: 40px;
+
+}
+.block{
+
+    width: auto;
+    height: auto;
+    justify-content: center;
+}
+.vid{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid ;
+    border-color: #0a1c34;
+    align-items: center;
+    justify-content: center;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin: auto; */
+    background-color: #c0d9f8;
+    border-radius: 20px;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 20rem;
+}
+.booble{
+    border-radius: 15px;
+    background-color: gray;
+    color: red;
+    width: 20rem;
+    transition: all ease 2s;
+    text-align: center;
+    margin: auto;
+    justify-items: auto;
+    padding-bottom: 3px;
+}
